@@ -30,7 +30,7 @@
 	function validasi() {
 		var username = document.getElementById("Wallet").value;
 		var password = document.getElementById("password").value;		
-		if (Wallet != "" && password!="") {
+		if (Wallet!= "" && password!="") {
 			return true;
 		}else{
 			alert('Wallet and password is invalid!');
