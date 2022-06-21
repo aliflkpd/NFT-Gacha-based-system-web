@@ -12,8 +12,8 @@
 	<br/>
 		<form action="login.php" method="post" onSubmit="return validasi()">
 			<div>
-				<label>Username:</label>
-				<input type="text" name="" id="Wallet account" />
+				<label>Wallet account:</label>
+				<input type="text" name="" id="Wallet" />
 			</div>
 			<div>
 				<label>Password:</label>
@@ -28,9 +28,9 @@
  
 <script type="text/javascript">
 	function validasi() {
-		var username = document.getElementById("Wallet account").value;
+		var username = document.getElementById("Wallet").value;
 		var password = document.getElementById("password").value;		
-		if (username != "" && password!="") {
+		if (Wallet != "" && password!="") {
 			return true;
 		}else{
 			alert('Wallet and password is invalid!');
