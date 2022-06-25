@@ -1,12 +1,12 @@
 <?php
 session_start();
 require "config.php";
-if(isset($_POST['Wallet'])) {
+if(isset($_POST['WalletID'])) {
     $login = false;
     $userLogin;
     $query = $conn->query("
         select*from user where 
-            Wallet='".$_POST['Wallet']);
+            WalletID='".$_POST['WalletID']);
     while($user = $query->fetch_array()) {
         if(password_verify($_POST['password'], $user['password'])) {
             $login = true;
@@ -15,11 +15,11 @@ if(isset($_POST['Wallet'])) {
     }
     print_r($user);
     if($login) {
-        $_SESSION['Wallet'] = $wallet;
-        $_SESSION['status'] = 'login';
-        header("Location: http://localhost/kuliah");
+        $_SESSION['akses'] = 'admin';
+        $_SESSION['name'] = 'alif lakipadada';
+        $_SESSION['WalletID'] = $userLogin['WalletID'];
     } else {
-        echo "Wallet or password is invalid!";
+        echo "Wallet or Password is invalid!";
     }
 }
 
@@ -28,3 +28,30 @@ if(isset($_GET['logout'])) {
     header("Location: http://localhost/kuliah");
 }
 ?>
+<!doctype html>
+<html>
+    <head>
+    <title>Baby domination NFT</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+<body>
+    <br/>
+    <br/>
+    <br/>
+    <div class="login">
+    <br/>
+    <form action="login.php" method="post">
+        <div>
+        <label>Wallet ID:</label>
+        <input type="text" name="Wallet" id="Wallet" />
+        </div>
+        <div>
+        <label>Password:</label>
+        <input type="password" name="Password" id="Password" />
+        </div>
+         <div>
+            <input type="submit" value="Login" class="tombol">
+        </div>
+    </div>
+    </form>
+</body>
